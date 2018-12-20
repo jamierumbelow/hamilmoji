@@ -1,0 +1,21 @@
+{
+  "name": "hamilmoji",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jamie Rumbelow <jamie@jamierumbelow.net>",
+  "license": "MIT",
+  "dependencies": {
+    "algoliasearch": "^3.32.0",
+    "dotenv": "^6.2.0",
+    "emoji.json": "^11.0.1",
+    "lodash": "^4.17.11",
+    "lyricist": "^2.2.2",
+    "slugify": "^1.3.4"
+  },
+  "scripts": {
+    "setup": "node --harmony index.js setup",
+    "get-lyrics": "node --harmony index.js get-lyrics",
+    "setup-emoji": "node --harmony index.js setup-emoji",
+    "index": "node --harmony index.js index"
+  }
+}
