@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hamilmoji</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css">
+  <style>
+    #hits p em {
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+  <h1>hamilmoji 👀 🧠 💼</h1>
+
+  <p>a hamilton search engine, setup to search with emoji.</p>
+  <p>examples:</p>
+  <ul>
+    <li>👀 🧠 💼 - lookin' for a mind at work (The Schuyler Sisters)</li>
+    <li>😔 👆 🌆 - it's quiet uptown (It's Quiet Uptown)</li>
+  </ul>
+
+  <main>
+    <div id="search-box"></div>
+    <div id="hits"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+  <script>
+    const search = instantsearch({
+      appId: 'BRTYNJSBWI',
+      apiKey: 'e13adf666dd484d6e387f72e2843df54',
+      indexName: 'songs'
+    })
+
+    search.addWidget(
+      instantsearch.widgets.searchBox({
+        container: '#search-box',
+        placeholder: 'Search for hamilton songs'
+      })
+    )
+
+    search.addWidget(
+      instantsearch.widgets.hits({
+        container: '#hits',
+        templates: {
+          empty: 'No results',
+          item: '<h4>{{{_highlightResult.title.value}}}</h4><p>{{{_highlightResult.lyrics.value}}}</p>'
+        }
+      })
+    )
+
+    search.start()
+  </script>
+</body>
+</html>
